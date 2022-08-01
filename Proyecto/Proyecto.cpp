@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <clocale>
+#include<windows.h>
 
 using namespace std;
 // Ejercicio2
@@ -58,9 +59,10 @@ int main(int argc, char** argv) {
 			cin >> respuesta[NumeroRandom];
 			
 			do {
-				cout << "Selecciona una respuesta" << endl;
-				cout << "Respuesta definitiva?\nDigita SI o NO tambien puedes acceder a uno de tus comodines" << endl;
+				
+				cout << "Respuesta definitiva?\nDigita SI o NO tambien puedes acceder a uno de tus comodines escribiendo Comodin" << endl;
 				cin >> RespuestaDefinitiva;
+				system("cls");
 				
 				if (RespuestaDefinitiva == "SI" || RespuestaDefinitiva == "si") {
 					respuesta[NumeroRandom] = respuesta[NumeroRandom];
@@ -69,10 +71,18 @@ int main(int argc, char** argv) {
 					respuesta[NumeroRandom] = "comodin";
 
 				}
+				else {
+					cout << "Te repito de nuevo la pregunta" << endl;
+					cout << millonario[NumeroRandom][0] << endl;
+					cin >> respuesta[NumeroRandom];
+					system("cls");
+				}
 
 			} while (RespuestaDefinitiva != "SI" || RespuestaDefinitiva != "SI");
 			
 			verificacionRepetidos[NumeroRandom] = true;
+			system("cls");
+
 		}
 		else {
 			i--;
