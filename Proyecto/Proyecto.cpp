@@ -1,14 +1,20 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <clocale>
+
 using namespace std;
 // Ejercicio2
 int main(int argc, char** argv) {
+	setlocale(LC_CTYPE, "Spanish");
 	int a = 0;
 	bool verificado;
-	string respuesta[3];
+	string respuesta[8];
 	////////////DECLARACION DE PREGUNTAS
-	string millonario[5][2]{
+	
+
+
+	string millonario[8][2]{
 		
 		 "0.Quien descubrio America\n  A:Magallanes\n  B:Colon\n  C:Bush\n  D:Araya"
 		  ,"B"
@@ -24,21 +30,22 @@ int main(int argc, char** argv) {
 		/////
 		,"4.En el Castillo de Amboise localizado en Francia se encuentra la tumba del pintor:\n  A:Francisco de Goya\n  B:Leonardo da Vinci\n  C:Miguel Angel\n  D:Claude Monet"
 		,"B"
+		////
+		,"5.En cual de los siguientes paises el desierto de **Sahara** no forma parte de su extension:\n  A:Egipto\n  B:Tunez\n  C:Argelia\n  D:Kenia"
+		,"D"
+		///
+		,"6.En que pais esta ubicada **Capital Gate**,la torre mas inclinada del mundo\n  A:Jordania\n  B:Arabia Saudita\n  C:Marruecos\n  D:Emiratos Arabes Unidos"
+		,"D"
 		/////
+		,"7.Cal fue la moneda oficial de italia durante mas de cien años antes de ser reemplazada por el euro?\n  A:Corona\n  B:Rublo\n  C:Libra\n  D:Lira"
+		,"D"
 	};
-	////////////DECLARACION DE PREGUNTAS
-	string millonarioRespuestasCorrectas[5]{
-	/*Preunta 0*/"B"
-	/*Preunta 1*/,"A"
-	/*Preunta 2*/,"A"
-	/*Preunta 3*/,"B"
-	/*Preunta 4*/,"B"
-	
-	};
-	bool pregunta[5]{ false,false,false,false};
 
-	for (int i = 0;i<5;i++) {
-	a = rand() % 3;
+
+	bool pregunta[8]{ false,false,false,false,false,false,false,false};
+
+	for (int i = 0;i<8;i++) {
+	a = rand() % 8;
 	cout << a<<endl;
 		verificado=pregunta[a];
 		if (verificado==false) {
