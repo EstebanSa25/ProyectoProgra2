@@ -14,16 +14,54 @@
 #include<conio.h>
 using namespace std;
 // METODOS
-
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
 ////
-bool ConsultarRespuesta(string respuesta,string respuestaCorrecta) {
-	if (respuesta == respuestaCorrecta ) {
+int NumeroAleatorio() {
+	int NumeroRandom;
+	return NumeroRandom = rand() % 13;
+}
+string Convertir(char respuesta) {
+	int CHAR_LENGTH = 1;
+	string respuestaConv(CHAR_LENGTH, respuesta);
+	return respuestaConv;
+}
+bool ConsultarRespuesta(string respuestaConv,string respuestaCorrecta,string vector) {
+	string JugarDeNuevo;
+	if (respuestaConv == respuestaCorrecta ) {
 		return true;
+		cout << "Correcto" << endl;
+		for (int i = 0; i < 3; i++) {
+			system("color 27");
+			Sleep(15);
+			system("color 07");
+		}
+
 	}
 	else {
-		return false;
+		cout << "incorrecto" << endl;
+		cout << "La respuesta Correcta es ----> "<<respuestaCorrecta<< endl;
+		
+		for (int i = 0; i < 3;i++) {
+			system("color 47");
+			Sleep(15);
+			system("color 07");
+		}
+			
 	
+		cout << "Desea jugar de nuevo?" << endl;
+		cin >> JugarDeNuevo;
+		if (JugarDeNuevo == "SI") {
+			system("cls");
+			
+		}
+		else {
+			exit(EXIT_SUCCESS);
+		}
 	}
+
 }
 ////////
 bool ComprobarLetra(char respuesta) {
@@ -44,110 +82,81 @@ bool RespuestaDefinitiva(string respuestaDefinitiva) {
 		return true;
 	}
 	else {
+		
 		return false;
 	}
 }
 ////////////////////////////////////////////
 void MostrarPreguntas() {
-
-	bool repetidos[]{ false,false,false,false,false,false,false,false,false,false,false,false,false,false,false };
-	/*Aqui se declara las preguntas*/string millonario[11][6]{
+	int NumeroRandom;
+	string posRespuestaDefinitiva;
+	string respuestaCorrecta;
+	bool repetidos[11]{ false,false,false,false,false,false,false,false,false,false,false};
+	/*Aqui se declara las preguntas*/string millonario[11][2]{
 
 		 "0.Quien descubrio America\n  A:Magallanes\n  B:Colon\n  C:Bush\n  D:Araya"
 		  ,"B"
-		,"A:Magallanes"
-		,"B:Colon"
-		,"C:Bush"
-		,"D:Araya"
 		//////
 
 		,"1.En que alimentos encontramos la vitamina C\n  A:Citricos:La naranja\n  B:Granos:El arroz\n  C:Legumbres:habichuelas\n  D:Lacteos:La leche"
 		,"A"
-		,"A:Citricos:La naranja"
-		,"B:Granos:El arroz"
-		,"C:Legumbres:habichuelas"
-		,"D:Lacteos:La leche"
+	
 		//////
 
 		,"2.Como se  llama el movimiento de retroceso que hacen las olas luego de llegar a la orilla\n  A:Resaca\n  B:Arrastre\n  C:Turbulencia\n  D:Repunte"
 		,"A"
-		,"A:Resaca"
-		,"B:Arrastre"
-		,"C:Turbulencia"
-		,"D:Repunte"
+	
 		/////
 
 		,"3.Que pais se tendria que visitar para ver las ruinas de troya\n  A:Grecia\n  B:Turquia\n  C:Bulgaria\n  D:Rumania"
 		,"B"
-		,"A:Grecia"
-		,"B:Turquia"
-		,"C:Bulgaria"
-		," D:Rumania"
+		
 		/////
 		,"4.En el Castillo de Amboise localizado en Francia se encuentra la tumba del pintor:\n  A:Francisco de Goya\n  B:Leonardo da Vinci\n  C:Miguel Angel\n  D:Claude Monet"
 		,"B"
-		,"A:Francisco de Goya"
-		,"B:Leonardo da Vinci"
-		,"C:Miguel Angel"
-		,"D:Claude Monet"
+		
 		////
 
 		,"5.En cual de los siguientes paises el desierto de **Sahara** no forma parte de su extension:\n  A:Egipto\n  B:Tunez\n  C:Argelia\n  D:Kenia"
 		,"D"
-		,"A:Egipto"
-		,"B:Tunez"
-		,"C:Argelia"
-		,"D:Kenia"
+	
 		///
 
 		,"6.En que pais esta ubicada **Capital Gate**,la torre mas inclinada del mundo\n  A:Jordania\n  B:Arabia Saudita\n  C:Marruecos\n  D:Emiratos Arabes Unidos"
 		,"D"
-		,"A:Jordania"
-		,"B:Arabia Saudita"
-		,"C:Marruecos"
-		,"D:Emiratos Arabes Unidos"
+		
 		/////
 
 		,"7.¿Cúal fue la moneda oficial de italia durante mas de cien años antes de ser reemplazada por el euro?\n  A:Corona\n  B:Rublo\n  C:Libra\n  D:Lira"
 		,"D"
-		,"A:Corona"
-		,"B:Rublo"
-		,"C:Libra"
-		,"D:Lira"
+		
 		//////
 
 		,"8.¿Cúantas aristas tiene un cubo?\n  A:16\n  B:12\n  C:8\n  D:4"
 		,"B"
-		,"A:16"
-		,"B:12"
-		,"C:8"
-		,"D:4"
+		
 		//////
 		,"9.Durante el programa de la NASA \"Apolo\",¿cuántos astronautas pisaron la Luna?\n  A:3\n  B:6\n  C:9\n  D:12"
 		,"D"
-		,"A:3"
-		,"B:6"
-		,"C:9"
-		,"D:12"
+		
 		//////
 		,"10.¿Cuál es el gas que infla las bolsas de aire,o \"airbags\",que se encuentran en los automóviles?\n  A:Helio\n  B:Nitrógeno\n  C:Oxígeno\n  D:Hidrógeno"
 		,"B"
-		,"A:Helio"
-		,"B:Nitrógeno"
-		,"C:Oxígeno"
-		,"D:Hidrógeno"
+		
 	};
 	string respuestaDefinitiva;
 	char respuesta;
-	int NumeroRandom = 0;
-	for (int i = 0; i < 11; i++) {
-		NumeroRandom = rand() % 13;
+
+	for (int i = 0; i<11; i++) {
+		NumeroRandom = NumeroAleatorio();
 		if (repetidos[NumeroRandom] == false) {
-			system("cls");
-			cout << millonario[NumeroRandom][0]<<endl;
+			
+			//system("cls");
+			cout << NumeroRandom << endl;
+			cout<< millonario[NumeroRandom][0]<<endl;
 			cin >> respuesta;
 			if (ComprobarLetra(respuesta)==true) {
-				//cout << "Respuesta definitiva?" << endl;
+				
 			}//if letra
 			///////////////////////
 			else {
@@ -171,6 +180,7 @@ void MostrarPreguntas() {
 				while (respuestaDefinitiva != "SI") {
 					system("cls");
 					cout << "Te repito la pregunta" << endl;
+					posRespuestaDefinitiva = millonario[NumeroRandom][0];
 					cout << millonario[NumeroRandom][0] << endl;
 					cin >> respuesta;
 
@@ -193,19 +203,11 @@ void MostrarPreguntas() {
 				}
 			}
 			//Respuesta definitiva
-			int CHAR_LENGTH = 1;
-			string respuestaConv(CHAR_LENGTH, respuesta);
-			string respuestaCorrecta;
-			respuestaCorrecta = millonario[NumeroRandom][1];
-			if (ConsultarRespuesta(respuestaConv,respuestaCorrecta) == true) {
-				cout << "correcto" << endl;
-				
-			}
-			else {
-				cout << "incorrecto" << endl;
-				exit(0);
+			string vector;
+			vector = millonario[NumeroRandom][0];
 
-			}
+			respuestaCorrecta = millonario[NumeroRandom][1];
+			ConsultarRespuesta(Convertir(respuesta),respuestaCorrecta,vector);
 			////////////////
 			
 		}//if repetidos
