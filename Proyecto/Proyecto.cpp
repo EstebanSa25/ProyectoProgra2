@@ -19,24 +19,29 @@ using std::cin;
 using std::endl;
 using std::string;
 ////
+
 int NumeroAleatorio() {
-	int NumeroRandom;
-	return NumeroRandom = rand() % 13;
+	srand(time(NULL));
+
+	int NumeroRandom=0;
+	return NumeroRandom = rand() % 10;
 }
 string Convertir(char respuesta) {
 	int CHAR_LENGTH = 1;
 	string respuestaConv(CHAR_LENGTH, respuesta);
 	return respuestaConv;
 }
+
 bool ConsultarRespuesta(string respuestaConv,string respuestaCorrecta,string vector) {
 	string JugarDeNuevo;
 	if (respuestaConv == respuestaCorrecta ) {
-		return true;
+		
 		cout << "Correcto" << endl;
 		for (int i = 0; i < 3; i++) {
 			system("color 27");
 			Sleep(15);
 			system("color 07");
+			return true;
 		}
 
 	}
@@ -50,15 +55,16 @@ bool ConsultarRespuesta(string respuestaConv,string respuestaCorrecta,string vec
 			system("color 07");
 		}
 			
-	
+		system("cls");
 		cout << "Desea jugar de nuevo?" << endl;
 		cin >> JugarDeNuevo;
-		if (JugarDeNuevo == "SI") {
+		if (JugarDeNuevo == "SI"|| JugarDeNuevo == "si" || JugarDeNuevo == "Si") {
 			system("cls");
 			
 		}
 		else {
 			exit(EXIT_SUCCESS);
+			
 		}
 	}
 
@@ -67,7 +73,8 @@ bool ConsultarRespuesta(string respuestaConv,string respuestaCorrecta,string vec
 bool ComprobarLetra(char respuesta) {
 	bool comprobacion = false;
 	
-		if (respuesta == 'A' || respuesta == 'B' || respuesta == 'C' || respuesta == 'D') {
+		if (respuesta == 'A' || respuesta == 'B' || respuesta == 'C' || respuesta == 'D'|| respuesta == 'a' || respuesta == 'b' || respuesta == 'c' || respuesta == 'd') {
+
 			return comprobacion = true;
 		}
 		else {
@@ -88,7 +95,7 @@ bool RespuestaDefinitiva(string respuestaDefinitiva) {
 }
 ////////////////////////////////////////////
 void MostrarPreguntas() {
-	int NumeroRandom;
+	int NumeroRandom=0;
 	string posRespuestaDefinitiva;
 	string respuestaCorrecta;
 	bool repetidos[11]{ false,false,false,false,false,false,false,false,false,false,false};
@@ -146,13 +153,15 @@ void MostrarPreguntas() {
 	};
 	string respuestaDefinitiva;
 	char respuesta;
+	srand(time(NULL));
 
-	for (int i = 0; i<11; i++) {
+	for (int i = 0; i<10; i++) {
 		NumeroRandom = NumeroAleatorio();
+		cout << NumeroRandom << endl;
 		if (repetidos[NumeroRandom] == false) {
 			
-			//system("cls");
-			cout << NumeroRandom << endl;
+			system("cls");
+			
 			cout<< millonario[NumeroRandom][0]<<endl;
 			cin >> respuesta;
 			if (ComprobarLetra(respuesta)==true) {
